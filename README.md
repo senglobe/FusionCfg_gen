@@ -7,25 +7,25 @@ The script will read the Border devices BGP configuration pushed by the DNAC and
 
 The script is executable from the DANC SSH session.
 
-1. Download the script (FusionCfg_gen_vX.X) and copy (SCP or your preferred method) to DANC /tmp folder
+*1*. Download the script (FusionCfg_gen_vX.X) and copy (SCP or your preferred method) to DANC /tmp folder
 
-2. Provide execute access to the file.
-/snip/
-$ sudo  chmod 777 FusionCfg_gen_v1.1
-[sudo] password for maglev: 
-[Tue Dec 01 19:52:34 IST] maglev@192.168.5.11 (maglev-master-1) fusion_cfg
-$ ls -l FusionCfg_gen_v1.1 
--rwxrwxrwx 1 maglev maglev 5887712 Dec  1 18:53 FusionCfg_gen_v1.1
-[Tue Dec 01 19:52:45 IST] maglev@192.168.5.11 (maglev-master-1) fusion_cfg
-/snip/
+*2*. Provide execute access to the file.<br/>
+_/snip/_<br/>
+$ sudo  chmod 777 FusionCfg_gen_v1.1<br/>
+[sudo] password for maglev:<br/>
+[Tue Dec 01 19:52:34 IST] maglev@192.168.5.11 (maglev-master-1) fusion_cfg<br/>
+$ ls -l FusionCfg_gen_v1.1<br/>
+-rwxrwxrwx 1 maglev maglev 5887712 Dec  1 18:53 FusionCfg_gen_v1.1<br/>
+[Tue Dec 01 19:52:45 IST] maglev@192.168.5.11 (maglev-master-1) fusion_cfg<br/>
+_/snip/_<br/>
 
-3. Execute the file as any any other script, like -  “./“+filename 
-/snip/
-$ ./FusionCfg_gen_v1.1 
-/snip/
+*3*. Execute the file as any any other script, like -  “./“+filename <br/>
+_/snip/_<br/>
+$ ./FusionCfg_gen_v1.1 <br/>
+_/snip/_<br/>
 
 
-## Execution Example:
+## Execution Example:<br/>
 
 ### Execution
 $ ./FusionCfg_gen_v1.1 
@@ -44,9 +44,9 @@ This tool will generate BGP configuration for your fusion router(s)
  
 *******************************************************************************************************************
 
-Enter DANC IP address :<IP-address>
-Enter DANC admin username : <admin>
-Enter DNAC admin password : <password>
+Enter DANC IP address : _you IP-address_ <br/>
+Enter DANC admin username : _admin_ <br/>
+Enter DNAC admin password : _password_ <br/>
 
 ***---*** Initiating data Collection ***---***
 
@@ -54,131 +54,131 @@ The output file will be stored in the same location or path of the binary file a
 
 ***---*** Fusion configuration generation is completed ***---***
 
-### Configuration File
+### _Configuration File_
 
-$ ls -l
-total 5756
--rwxrwxrwx 1 maglev maglev 5887712 Dec  1 18:53 FusionCfg_gen_v1.1
--rw-r----- 1 maglev maglev    3338 Dec  1 19:59 FusionCofig_Dec-01-2020_19-59.txt
+$ ls -l<br/>
+total 5756<br/>
+-rwxrwxrwx 1 maglev maglev 5887712 Dec  1 18:53 FusionCfg_gen_v1.1<br/>
+-rw-r----- 1 maglev maglev    3338 Dec  1 19:59 FusionCofig_Dec-01-2020_19-59.txt<br/>
 
-$ cat FusionCofig_Dec-01-2020_19-59.txt 
-
-
-BLR_BORDER.cisco.com external interface TenGigabitEthernet1/0/9 neighbor device Configuration 
-
-router bgp 65000
-  bgp log-neighbor-changes 
-  neighbor remote-as192.5.100.13 65005
-  neighbor 192.5.100.13 update-source vlan3007
-  neighbor remote-as192.5.100.17 65005
-  neighbor 192.5.100.17 update-source vlan3008
-
- address-family ipv4 
-  neighbor 192.5.100.13 activate
-  neighbor 192.5.100.13 weight 65535
-  neighbor 192.5.100.17 activate
-  neighbor 192.5.100.17 weight 65535
-
-vlan 3007
- name BLR_BORDER_BGP_Int
-
-interface vlan 3007
- description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/9
- ip address 192.5.100.14 255.255.255.252
- no shutdown 
-
-vlan 3008
- name BLR_BORDER_BGP_Int
-
-interface vlan 3008
- description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/9
- ip address 192.5.100.18 255.255.255.252
- no shutdown 
-
- 
- *********************** end of device BLR_BORDER.cisco.com- interface TenGigabitEthernet1/0/9*********************** 
+$ cat FusionCofig_Dec-01-2020_19-59.txt <br/>
 
 
-BLR_BORDER.cisco.com external interface TenGigabitEthernet1/0/8 neighbor device Configuration 
+BLR_BORDER.cisco.com external interface TenGigabitEthernet1/0/9 neighbor device Configuration <br/>
 
-router bgp 65000
-  bgp log-neighbor-changes 
-  neighbor remote-as192.5.100.1 65005
-  neighbor 192.5.100.1 update-source vlan3001
-  neighbor remote-as192.5.100.5 65005
-  neighbor 192.5.100.5 update-source vlan3002
-  neighbor remote-as192.5.100.9 65005
-  neighbor 192.5.100.9 update-source vlan3006
+router bgp 65000<br/>
+  bgp log-neighbor-changes <br/>
+  neighbor remote-as192.5.100.13 65005<br/>
+  neighbor 192.5.100.13 update-source vlan3007<br/>
+  neighbor remote-as192.5.100.17 65005<br/>
+  neighbor 192.5.100.17 update-source vlan3008<br/>
 
- address-family ipv4 
-  neighbor 192.5.100.1 activate
-  neighbor 192.5.100.1 weight 65535
-  neighbor 192.5.100.5 activate
-  neighbor 192.5.100.5 weight 65535
-  neighbor 192.5.100.9 activate
-  neighbor 192.5.100.9 weight 65535
+ address-family ipv4 <br/>
+  neighbor 192.5.100.13 activate <br/>
+  neighbor 192.5.100.13 weight 65535 <br/>
+  neighbor 192.5.100.17 activate <br/>
+  neighbor 192.5.100.17 weight 65535 <br/>
 
-vlan 3006
- name BLR_BORDER_BGP_Int
+vlan 3007 <br/>
+ name BLR_BORDER_BGP_Int <br/>
 
-interface vlan 3006
- description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8
- ip address 192.5.100.10 255.255.255.252
- no shutdown 
+interface vlan 3007 <br/>
+ description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/9 <br/>
+ ip address 192.5.100.14 255.255.255.252 <br/>
+ no shutdown <br/>
 
-vlan 3001
- name BLR_BORDER_BGP_Int
+vlan 3008 <br/>
+ name BLR_BORDER_BGP_Int <br/>
 
-interface vlan 3001
- description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8
- ip address 192.5.100.2 255.255.255.252
- no shutdown 
-
-vlan 3002
- name BLR_BORDER_BGP_Int
-
-interface vlan 3002
- description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8
- ip address 192.5.100.6 255.255.255.252
- no shutdown 
+interface vlan 3008 <br/>
+ description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/9 <br/>
+ ip address 192.5.100.18 255.255.255.252 <br/>
+ no shutdown <br/>
 
  
- *********************** end of device BLR_BORDER.cisco.com- interface TenGigabitEthernet1/0/8*********************** 
+ *********************** end of device BLR_BORDER.cisco.com- interface TenGigabitEthernet1/0/9*********************** <br/>
+
+
+BLR_BORDER.cisco.com external interface TenGigabitEthernet1/0/8 neighbor device Configuration <br/>
+
+router bgp 65000 <br/>
+  bgp log-neighbor-changes <br/>
+  neighbor remote-as192.5.100.1 65005 <br/>
+  neighbor 192.5.100.1 update-source vlan3001 <br/>
+  neighbor remote-as192.5.100.5 65005 <br/>
+  neighbor 192.5.100.5 update-source vlan3002 <br/>
+  neighbor remote-as192.5.100.9 65005 <br/>
+  neighbor 192.5.100.9 update-source vlan3006 <br/>
+
+ address-family ipv4 <br/>
+  neighbor 192.5.100.1 activate <br/>
+  neighbor 192.5.100.1 weight 65535 <br/>
+  neighbor 192.5.100.5 activate <br/>
+  neighbor 192.5.100.5 weight 65535 <br/>
+  neighbor 192.5.100.9 activate <br/>
+  neighbor 192.5.100.9 weight 65535 <br/>
+
+vlan 3006 <br/>
+ name BLR_BORDER_BGP_Int <br/>
+
+interface vlan 3006<br/>
+ description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8<br/>
+ ip address 192.5.100.10 255.255.255.252<br/>
+ no shutdown <br/>
+
+vlan 3001<br/>
+ name BLR_BORDER_BGP_Int<br/>
+
+interface vlan 3001<br/>
+ description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8<br/>
+ ip address 192.5.100.2 255.255.255.252<br/>
+ no shutdown <br/>
+
+vlan 3002<br/>
+ name BLR_BORDER_BGP_Int<br/>
+
+interface vlan 3002<br/>
+ description BGP_Int_BLR_BORDER_TenGigabitEthernet1/0/8<br/>
+ ip address 192.5.100.6 255.255.255.252<br/>
+ no shutdown <br/>
+
+ 
+ *********************** end of device BLR_BORDER.cisco.com- interface TenGigabitEthernet1/0/8*********************** <br/>
 
  
  ------------------------------------ end of device BLR_BORDER.cisco.com------------------------------------
 
 
-CHN_BORDER.cisco.com external interface TenGigabitEthernet1/0/8 neighbor device Configuration 
+CHN_BORDER.cisco.com external interface TenGigabitEthernet1/0/8 neighbor device Configuration <br/>
 
-router bgp 65000
-  bgp log-neighbor-changes 
-  neighbor remote-as192.5.200.9 65015
-  neighbor 192.5.200.9 update-source vlan3003
-  neighbor remote-as192.5.200.13 65015
-  neighbor 192.5.200.13 update-source vlan3004
+router bgp 65000<br/>
+  bgp log-neighbor-changes <br/>
+  neighbor remote-as192.5.200.9 65015<br/>
+  neighbor 192.5.200.9 update-source vlan3003<br/>
+  neighbor remote-as192.5.200.13 65015<br/>
+  neighbor 192.5.200.13 update-source vlan3004<br/>
 
- address-family ipv4 
-  neighbor 192.5.200.9 activate
-  neighbor 192.5.200.9 weight 65535
-  neighbor 192.5.200.13 activate
-  neighbor 192.5.200.13 weight 65535
+ address-family ipv4 <br/>
+  neighbor 192.5.200.9 activate<br/>
+  neighbor 192.5.200.9 weight 65535<br/>
+  neighbor 192.5.200.13 activate<br/>
+  neighbor 192.5.200.13 weight 65535<br/>
 
-vlan 3004
- name CHN_BORDER_BGP_Int
+vlan 3004<br/>
+ name CHN_BORDER_BGP_Int<br/>
 
-interface vlan 3004
- description BGP_Int_CHN_BORDER_TenGigabitEthernet1/0/8
- ip address 192.5.200.14 255.255.255.252
- no shutdown 
+interface vlan 3004<br/>
+ description BGP_Int_CHN_BORDER_TenGigabitEthernet1/0/8<br/>
+ ip address 192.5.200.14 255.255.255.252<br/>
+ no shutdown <br/>
 
-vlan 3003
- name CHN_BORDER_BGP_Int
+vlan 3003<br/>
+ name CHN_BORDER_BGP_Int<br/>
 
-interface vlan 3003
- description BGP_Int_CHN_BORDER_TenGigabitEthernet1/0/8
- ip address 192.5.200.10 255.255.255.252
- no shutdown 
+interface vlan 3003<br/>
+ description BGP_Int_CHN_BORDER_TenGigabitEthernet1/0/8<br/>
+ ip address 192.5.200.10 255.255.255.252<br/>
+ no shutdown <br/>
 
  
  *********************** end of device CHN_BORDER.cisco.com- interface TenGigabitEthernet1/0/8*********************** 
